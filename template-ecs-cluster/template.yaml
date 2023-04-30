@@ -1,0 +1,9 @@
+name: template-ecs-cluster
+description: ECS Fargate cluster basic structure
+types:
+  - app-template
+inputs:
+  - label: Name of your organization (ex. codelicia)
+    type: text
+    name: org_name
+    required: true
