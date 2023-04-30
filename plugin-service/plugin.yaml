@@ -1,0 +1,43 @@
+name: plugin-service
+description: Plugin to add an ECS service to the existing cluster
+display-name: plugin-service
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: Name of your app (ex. calculator)
+    type: text
+    name: app_name
+    required: true
+  - label: Port (ex. 8081)
+    type: text
+    name: port
+    required: true
+  - label: Health check endpoint path (ex. /actuator/health)
+    type: text
+    name: health_check_path
+    required: true
+  - label: AWS account ID
+    type: text
+    name: aws_account_id
+    required: true
+
+hooks:
+  - type: edit
+    trigger: after-render
+    path: terraform/environments/prod/alb.tf
+    changes:
+      - search:
+          string: "egress"
+          insert-before:
+            snippet: snippets/sg-ingress.tf

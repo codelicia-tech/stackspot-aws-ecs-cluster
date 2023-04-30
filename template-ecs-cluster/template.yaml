@@ -1,17 +1,9 @@
 name: template-ecs-cluster
-description: Estrutura básica do cluster ECS Fargate
+description: ECS Fargate cluster basic structure
 types:
   - app-template
 inputs:
-  - label: Nome da sua organização (ex. codelicia)
+  - label: Name of your organization (ex. codelicia)
     type: text
     name: org_name
-    required: true
-  - label: Nome da sua aplicação (ex. calculadora)
-    type: text
-    name: app_name
-    required: true
-  - label: ID da sua conta AWS
-    type: text
-    name: aws_account_id
     required: true

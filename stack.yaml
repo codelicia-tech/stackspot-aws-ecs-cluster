@@ -1,4 +1,4 @@
-description: Stack para criar um cluster ECS Fargate
+description: Stack to setup an ECS Fargate Cluster
 name: stackspot-aws-ecs-cluster
 display-name: stackspot-aws-ecs-cluster
 picture: stack.png
