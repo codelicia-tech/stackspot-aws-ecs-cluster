@@ -1,0 +1,41 @@
+name: plugin-route53
+description: Adds an route 53 entry
+display-name: plugin-route53
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: Hosted Zone ID
+    type: text
+    name: hosted_zone_id
+    required: true
+  - label: Record Name (ex. www.example.com)
+    type: text
+    name: record_name
+    required: true
+
+hooks:
+  - type: edit
+    trigger: after-render
+    path: terraform/environments/prod/alb.tf
+    changes:
+      - insert:
+          line: 0
+          snippet: snippets/route-record.tf
+  - type: edit
+    trigger: after-render
+    path: terraform/environments/prod/variables.tf
+    changes:
+      - insert:
+          line: 0
+          snippet: snippets/hosted-zone-id-variable.tf
