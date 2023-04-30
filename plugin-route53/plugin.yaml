@@ -4,14 +4,14 @@ display-name: plugin-route53
 picture: plugin.png
 category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
 compatibility:
-  - java
-  - spring
+  - github
 about: docs/about.md
 usage: docs/usage.md
 use-case: docs/use-case.md
 implementation: docs/implementation.md
 technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
-  - "Api"
+  - Terraform
+  - AWS ECS/Fargate
 types:
   - app
 inputs:
